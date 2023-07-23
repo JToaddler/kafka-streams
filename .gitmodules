@@ -1,3 +1,0 @@
-[submodule "word-count"]
-	path = word-count
-	url = https://github.com/JToaddler/kafka-streams.git
