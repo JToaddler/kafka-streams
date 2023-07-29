@@ -37,7 +37,7 @@ public class WordCountStreamApp {
 		prop.put(StreamsConfig.APPLICATION_ID_CONFIG, "word-count-app");
 		prop.put(StreamsConfig.CLIENT_ID_CONFIG, "word-count-app");
 
-		prop.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
+		prop.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, "kafka.localhost.com:9092");
 		prop.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, Serdes.String().getClass());
 		prop.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, Serdes.String().getClass());
 
