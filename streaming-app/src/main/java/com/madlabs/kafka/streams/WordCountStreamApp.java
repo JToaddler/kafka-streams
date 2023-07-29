@@ -24,11 +24,11 @@ public class WordCountStreamApp {
 		final StreamsBuilder builder = new StreamsBuilder();
 
 		Topology topology = createWordCountStream(builder);
-		
+
 		final KafkaStreams streams = new KafkaStreams(topology, streamsConfiguration);
 
 		streams.start();
-		System.out.println("Word Stream Topology : "+topology.describe());
+		System.out.println("Word Stream Topology : " + topology.describe());
 		Runtime.getRuntime().addShutdownHook(new Thread(streams::close));
 	}
 
@@ -37,7 +37,7 @@ public class WordCountStreamApp {
 		prop.put(StreamsConfig.APPLICATION_ID_CONFIG, "word-count-app");
 		prop.put(StreamsConfig.CLIENT_ID_CONFIG, "word-count-app");
 
-		prop.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, "kafka.localhost.com:9092");
+		prop.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, "kafka:9092");
 		prop.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, Serdes.String().getClass());
 		prop.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, Serdes.String().getClass());
 
@@ -52,10 +52,10 @@ public class WordCountStreamApp {
 		final KStream<String, String> textLines = builder.stream(inputTopic);
 		final KTable<String, Long> wordCount = textLines.mapValues(value -> value.toLowerCase())
 				.flatMapValues(value -> Arrays.asList(value.split(" "))).groupBy((keyIgnore, count) -> {
-					System.out.println("Key :"+ keyIgnore + " Count :"+count);
+					System.out.println("Key :" + keyIgnore + " Count :" + count);
 					return count;
 				}).count();
-
+		
 		wordCount.toStream().to(outputTopic, Produced.with(Serdes.String(), Serdes.Long()));
 		return builder.build();
 

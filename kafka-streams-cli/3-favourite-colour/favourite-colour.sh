@@ -1,18 +1,18 @@
 #!/bin/bash
 
 # create input topic with one partition to get full ordering
-bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic favourite-colour-input
+bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic fav-color-input
 
 # create intermediary log compacted topic
 bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic user-keys-and-colours --config cleanup.policy=compact
 
 # create output log compacted topic
-bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic favourite-colour-output --config cleanup.policy=compact
+bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic fav-color-output --config cleanup.policy=compact
 
 
 # launch a Kafka consumer
 bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 \
-    --topic favourite-colour-output \
+    --topic fav-color-output \
     --from-beginning \
     --formatter kafka.tools.DefaultMessageFormatter \
     --property print.key=true \
@@ -23,7 +23,7 @@ bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 \
 # launch the streams application
 
 # then produce data to it
-bin/kafka-console-producer.sh --broker-list localhost:9092 --topic favourite-colour-input
+bin/kafka-console-producer.sh --broker-list localhost:9092 --topic fav-color-input
 #
 stephane,blue
 john,green
