@@ -1,0 +1,10 @@
+{
+    "inputs": [
+      {"topic": "carsize_topic", "timestamp": 0, "key": 1, "value": {"CARLENGTH": 2.0}},
+      {"topic": "carsize_topic", "timestamp": 0, "key": 2, "value": {"CARLENGTH": 4.0}},
+      {"topic": "carsize_topic", "timestamp": 0, "key": 3, "value": {"CARLENGTH": 6.0}},
+      {"topic": "carsize_topic", "timestamp": 0, "key": 4, "value": {"CARLENGTH": 3.0}},
+      {"topic": "carsize_topic", "timestamp": 0, "key": 5, "value": {"CARLENGTH": 1.0}},
+      {"topic": "carsize_topic", "timestamp": 0, "key": 6, "value": {"CARLENGTH": 8.5}}
+    ]
+  }

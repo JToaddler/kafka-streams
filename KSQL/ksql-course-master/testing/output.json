@@ -1,0 +1,13 @@
+
+{
+    "outputs": [
+      {"topic": "CARSIZE_BUCKETS", "timestamp": 0, "key": 1, "value": {"CARSIZE_RESULT": "medium"}},
+      {"topic": "CARSIZE_BUCKETS", "timestamp": 0, "key": 2, "value": {"CARSIZE_RESULT": "large"}},
+      {"topic": "CARSIZE_BUCKETS", "timestamp": 0, "key": 3, "value": {"CARSIZE_RESULT": "large"}},
+      {"topic": "CARSIZE_BUCKETS", "timestamp": 0, "key": 4, "value": {"CARSIZE_RESULT": "medium"}},
+      {"topic": "CARSIZE_BUCKETS", "timestamp": 0, "key": 5, "value": {"CARSIZE_RESULT": "small"}},
+      {"topic": "CARSIZE_BUCKETS", "timestamp": 0, "key": 6, "value": {"CARSIZE_RESULT": "huge"}}
+    ]
+  }
+
+  

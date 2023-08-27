@@ -1,0 +1,15 @@
+data/*
+*.swp
+.vscode/*
+java/target/*
+datagen/OLD/*
+worksheet/*
+ext/*java/.classpath/*
+java/.project/*
+java/.settings/*
+java/.classpath
+java/.project
+java/.idea/*
+pid_file.txt
+cp-6.0-docker/docker-compose.yml
+util/*

@@ -1,0 +1,10 @@
+CREATE STREAM carsizes (CARID INT KEY, CARLENGTH double) WITH (kafka_topic='carsize_topic', value_format='JSON');
+
+CREATE STREAM carsize_buckets 
+AS 
+SELECT CARID
+, CASE WHEN CARLENGTH < 2.0 THEN 'small' 
+       WHEN CARLENGTH < 4.0 THEN 'medium' 
+       ELSE 'huge' END AS carsize_result 
+FROM carsizes 
+EMIT CHANGES;
