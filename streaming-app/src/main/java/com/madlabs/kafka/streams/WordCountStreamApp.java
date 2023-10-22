@@ -21,9 +21,9 @@ public class WordCountStreamApp {
 	public static void main(String[] args) {
 
 		final Properties streamsConfiguration = getStreamsConfiguration();
-		final StreamsBuilder builder = new StreamsBuilder();
+		
 
-		Topology topology = createWordCountStream(builder);
+		Topology topology = createWordCountStream();
 
 		final KafkaStreams streams = new KafkaStreams(topology, streamsConfiguration);
 
@@ -37,7 +37,7 @@ public class WordCountStreamApp {
 		prop.put(StreamsConfig.APPLICATION_ID_CONFIG, "word-count-app");
 		prop.put(StreamsConfig.CLIENT_ID_CONFIG, "word-count-app");
 
-		prop.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, "kafka:9092");
+		prop.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, "192.168.2.101:9092");
 		prop.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, Serdes.String().getClass());
 		prop.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, Serdes.String().getClass());
 
@@ -47,8 +47,8 @@ public class WordCountStreamApp {
 		return prop;
 	}
 
-	static Topology createWordCountStream(final StreamsBuilder builder) {
-
+	static Topology createWordCountStream() {
+		final StreamsBuilder builder = new StreamsBuilder();
 		final KStream<String, String> textLines = builder.stream(inputTopic);
 		final KTable<String, Long> wordCount = textLines.mapValues(value -> value.toLowerCase())
 				.flatMapValues(value -> Arrays.asList(value.split(" "))).groupBy((keyIgnore, count) -> {
